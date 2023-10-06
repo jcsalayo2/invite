@@ -14,9 +14,9 @@ jobs:
       - uses: MXNXV-ERR/Flutter-ApkBuild-And-Firbase-Deploy-Action@v1.0.0
         with:
            # For pushng artifacts to releases,Ensure read write access to workflow
-          githubToken: '${{secrets.GITHUB_TOKEN}}'
+          repoToken: '${{secrets.GITHUB_TOKEN}}'
           # For publishing onto Firebase,for that specific app
-          firebaseServiceAcc:  '${{ secrets.FIREBASE_SERVICE_ACCOUNT_INVITE_401215 }}'
+          firebaseServiceAccount:  '${{ secrets.FIREBASE_SERVICE_ACCOUNT_INVITE_401215 }}'
       #- uses: FirebaseExtended/action-hosting-deploy@v0
       #  with:
       #    repoToken: '${{ secrets.GITHUB_TOKEN }}'

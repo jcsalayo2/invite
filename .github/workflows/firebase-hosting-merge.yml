@@ -12,10 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: Flutter-libraries/mayo_flutter_workflows@v0.0.3.staging.5
-      #- uses: FirebaseExtended/action-hosting-deploy@v0
-      #  with:
-      #    repoToken: '${{ secrets.GITHUB_TOKEN }}'
-      #    firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_INVITE_401215 }}'
-      #    channelId: live
-      #    projectId: invite-401215
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_INVITE_401215 }}'
+          channelId: live
+          projectId: invite-401215

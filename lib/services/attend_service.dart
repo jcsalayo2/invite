@@ -41,12 +41,13 @@ class BunbuyVoucherService {
   }
 
   Future<bool> addAttendFirebase(
-      String pangalan, String pagkain, String mensahe) async {
+      String pangalan, String pagkain, String mensahe, bool answer) async {
     return await attend.add({
       "Name": pangalan,
       "Food": pagkain,
       "Message": mensahe,
-      "DateTime": DateTime.now()
+      "DateTime": DateTime.now(),
+      "Answer" : answer
     }).then((value) {
       return true;
     }).catchError((error) {

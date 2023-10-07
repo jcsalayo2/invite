@@ -134,7 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 });
                                 var success = await BunbuyVoucherService()
                                     .addAttendFirebase(pangalan.text,
-                                        pagkain.text, mensahe.text);
+                                        pagkain.text, mensahe.text, true);
 
                                 if (success) {
                                   setState(() {
@@ -157,7 +157,51 @@ class _MyHomePageState extends State<MyHomePage> {
                                   ));
                                 }
                               },
-                        child: Text('Ako Ay Makakapunta'))),
+                        child: const Text(
+                          'Ako Ay Makakapunta',
+                          textAlign: TextAlign.center,
+                        ))),
+                Padding(
+                    padding: EdgeInsets.only(left: 50, right: 50, top: 20),
+                    child: ElevatedButton(
+                        onPressed: pangalan.text == '' ||
+                                pagkain.text == '' ||
+                                mensahe.text == '' ||
+                                loadingState
+                            ? null
+                            : () async {
+                                setState(() {
+                                  loadingState = true;
+                                });
+                                var success = await BunbuyVoucherService()
+                                    .addAttendFirebase(pangalan.text,
+                                        pagkain.text, mensahe.text, false);
+
+                                if (success) {
+                                  setState(() {
+                                    pangalan.text = '';
+                                    pagkain.text = '';
+                                    mensahe.text = '';
+                                    loadingState = false;
+                                  });
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(const SnackBar(
+                                    content: Text("Success"),
+                                  ));
+                                } else {
+                                  setState(() {
+                                    loadingState = false;
+                                  });
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(const SnackBar(
+                                    content: Text("Something Went Wrong"),
+                                  ));
+                                }
+                              },
+                        child: const Text(
+                          'Pasensya, Ako Ay Hindi Makakadalo',
+                          textAlign: TextAlign.center,
+                        ))),
               ],
             )),
           ),
